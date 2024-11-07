@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk, ua">
+    <head>
+        <meta charset="utf-8" />
+        <title>WebCraft</title>
+        <link
+            rel="icon"
+            href="./textures/additional/webcraft.png"
+            type="image/png"
+        />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+            body {
+                background-image: url(./textures/additional/bg.jpg);
+                background-size: cover;
+                background-position: right bottom;
+                position: relative;
+            }
+
+            table {
+                display: flex;
+                justify-content: center;
+            }
+
+            button {
+                cursor: pointer;
+                border-radius: 15px;
+                background-color: #808080;
+                padding: 3px;
+            }
+
+            p {
+                font-family: "Ubuntu", sans-serif;
+                font-size: 45px;
+                font-weight: 800;
+                font-style: normal;
+                color: rgb(0, 0, 0);
+                text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff,
+                    -2px 2px 0 #ffffff, 2px 2px 0 #ffffff;
+            }
+
+            hr {
+                color: #ffffff;
+                width: 800px;
+            }
+
+            .img_bt {
+                width: 150px;
+                display: flex;
+                justify-content: flex-end;
+                position: relative;
+            }
+
+            #lang td,
+            #device td {
+                display: flex;
+                justify-content: center;
+                position: relative;
+            }
+
+            #lang_title,
+            #device_title {
+                font-size: 55px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr id="lang">
+                <td>
+                    <p id="lang_title" class="ua">Мова:</p>
+                    <p id="lang_title" class="uk">Language:</p>
+                </td>
+                <td>
+                    <button id="uk">
+                        <img
+                            class="img_bt"
+                            src="./textures/additional/uk_lang.png"
+                            alt="uk"
+                        />
+                    </button>
+                    <button id="ua">
+                        <img
+                            class="img_bt"
+                            src="./textures/additional/ua_lang.png"
+                            alt="ua"
+                        />
+                    </button>
+                </td>
+            </tr>
+
+            <tr id="device">
+                <td>
+                    <p id="device_title" class="ua">Пристрій:</p>
+                    <p id="device_title" class="uk">Device:</p>
+                </td>
+                <td>
+                    <button id="pc">
+                        <img
+                            class="img_bt"
+                            src="./textures/additional/pc.png"
+                            alt="pc"
+                        />
+                    </button>
+                    <button id="phone">
+                        <img
+                            class="img_bt"
+                            src="./textures/additional/phone.png"
+                            alt="phone"
+                        />
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            let language;
+            let device;
+
+            try {
+                language = localStorage.getItem("lang");
+                if (!language) {
+                    language = "uk";
+                }
+            } catch (error) {
+                language = "uk";
+            }
+
+            try {
+                device = localStorage.getItem("device");
+                if (!device) {
+                    device = "pc";
+                }
+            } catch (error) {
+                device = "pc";
+            }
+
+            if (language == "uk") {
+                let elem = document.getElementsByClassName("ua");
+
+                while (elem.length > 0) {
+                    elem[0].remove();
+                }
+            } else if (language == "ua") {
+                let elem = document.getElementsByClassName("uk");
+
+                while (elem.length > 0) {
+                    elem[0].remove();
+                }
+            }
+
+            function sound(src) {
+                this.sound = document.createElement("audio");
+                this.sound.src = src;
+                this.sound.setAttribute("preload", "auto");
+                this.sound.setAttribute("controls", "none");
+                this.sound.style.display = "none";
+                document.body.appendChild(this.sound);
+                this.play = function () {
+                    this.sound.play();
+                };
+                this.stop = function () {
+                    this.sound.pause();
+                };
+            }
+
+            const bg = new sound("./sounds/additional/bg.mp3");
+            const bt = new sound("./sounds/additional/button.mp3");
+            bg.play();
+            setInterval(function () {
+                bg.play();
+            }, 1);
+
+            document
+                .getElementById("uk")
+                .addEventListener("click", function () {
+                    bt.play();
+                    localStorage.setItem("lang", "uk");
+                    setTimeout(function () {
+                        if (true) {
+                            if (true || true) {
+                                location.reload();
+                            }
+                        }
+                    }, 500);
+                });
+            document
+                .getElementById("ua")
+                .addEventListener("click", function () {
+                    bt.play();
+                    localStorage.setItem("lang", "ua");
+                    setTimeout(function () {
+                        if (true) {
+                            if (true || true) {
+                                location.reload();
+                            }
+                        }
+                    }, 500);
+                });
+            document
+                .getElementById("phone")
+                .addEventListener("click", function () {
+                    bt.play();
+                    localStorage.setItem("device", "phone");
+                    setTimeout(function () {
+                        if (true) {
+                            if (true || true) {
+                                location.reload();
+                            }
+                        }
+                    }, 500);
+                });
+            document
+                .getElementById("pc")
+                .addEventListener("click", function () {
+                    bt.play();
+                    localStorage.setItem("device", "pc");
+                    setTimeout(function () {
+                        if (true) {
+                            if (true || true) {
+                                location.reload();
+                            }
+                        }
+                    }, 500);
+                });
+        </script>
+    </body>
+</html>

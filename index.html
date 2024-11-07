@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="uk, ua">
+    <head>
+        <meta charset="utf-8" />
+        <title>WebCraft</title>
+        <link
+            rel="icon"
+            href="./textures/additional/webcraft.png"
+            type="image/png"
+        />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+            @keyframes logo_anim {
+                0% {
+                    width: 400px;
+                    height: 400px;
+                }
+                50% {
+                    width: 300px;
+                    height: 300px;
+                }
+                100% {
+                    width: 400px;
+                    height: 400px;
+                }
+            }
+
+            body {
+                background-image: url(./textures/additional/bg.jpg);
+                background-size: cover;
+                background-position: right bottom;
+                position: relative;
+            }
+
+            table {
+                display: flex;
+                justify-content: center;
+            }
+
+            button {
+                cursor: pointer;
+                border-radius: 15px;
+                background-color: #808080;
+                padding: 3px;
+            }
+
+            p {
+                font-family: "Ubuntu", sans-serif;
+                font-size: 45px;
+                font-weight: 800;
+                font-style: normal;
+                color: rgb(0, 0, 0);
+                text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff,
+                    -2px 2px 0 #ffffff, 2px 2px 0 #ffffff;
+            }
+
+            .alltr td {
+                display: flex;
+                justify-content: center;
+            }
+
+            #logo_tr {
+                display: flex;
+                align-items: center;
+            }
+
+            #logo_tr td {
+                background-color: #ffffff;
+                border-radius: 10px;
+                width: 410px;
+                height: 410px;
+                display: flex;
+                align-items: center;
+                margin-left: 200px;
+            }
+
+            #logo {
+                width: 400px;
+                height: 400px;
+                animation: logo_anim 3s ease-in-out infinite;
+            }
+
+            hr {
+                color: #ffffff;
+                width: 800px;
+            }
+
+            #heading_ft,
+            #txt_mn {
+                font-size: 55px;
+            }
+
+            .img_ft {
+                width: 200px;
+            }
+
+            #ft_img {
+                display: flex;
+                align-items: center;
+            }
+
+            #modal-setting {
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -20%);
+                width: auto;
+                z-index: 1;
+            }
+            .modal {
+                text-align: center;
+                border-radius: 10px;
+                background-color: #ffc400;
+                padding: 20px;
+            }
+
+            #selector {
+                background-color: #18ff3f;
+                cursor: pointer;
+                border-radius: 15px;
+                padding: 3px;
+                font-size: 25px;
+                color: #8b4513;
+                width: 210px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <div id="modal-setting">
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <p id="contents">...</p>
+                        </div>
+                    </div>
+                </div>
+            </tr>
+            <tr class="alltr" id="logo_tr">
+                <td>
+                    <img
+                        id="logo"
+                        src="textures/additional/logo.png"
+                        alt="logo"
+                    />
+                </td>
+            </tr>
+            <tr id="button_tr" class="alltr">
+                <td>
+                    <hr />
+                </td>
+                <td>
+                    <p class="ua" id="txt_mn">Меню:</p>
+                    <p class="uk" id="txt_mn">Menu:</p>
+                </td>
+                <td>
+                    <br />
+                </td>
+                <td>
+                    <a href="./create_world.html" onclick="bt.play()"
+                        ><button>
+                            <p class="ua">Створити світ</p>
+                            <p class="uk">Create a world</p>
+                        </button></a
+                    >
+                </td>
+                <td>
+                    <br />
+                </td>
+                <td>
+                    <button id="don">
+                        <p class="ua">Завантажити світ</p>
+                        <p class="uk">Download the world</p>
+                        <input
+                            type="file"
+                            accept=".js,application/javascript"
+                            id="folderInput"
+                            style="display: none"
+                        />
+                    </button>
+                </td>
+                <td>
+                    <br />
+                </td>
+                <td>
+                    <a href="./settings.html" onclick="bt.play()"
+                        ><button>
+                            <p class="ua">Налаштування</p>
+                            <p class="uk">Settings</p>
+                        </button></a
+                    >
+                </td>
+                <td>
+                    <br />
+                </td>
+                <td>
+                    <a href="./about_game.html" id="info_bt">
+                        <button onclick="selection(); bt.play()">
+                            <p class="ua">Інформація</p>
+                            <p class="uk">Information</p>
+                        </button>
+                    </a>
+                    <select id="selector">
+                        <option value="a_g">About game</option>
+                        <option value="doc">Documentation</option>
+                        <option value="post">Posts</option>
+                    </select>
+                </td>
+                <td>
+                    <hr />
+                </td>
+            </tr>
+            <tr id="ft_tr" class="alltr">
+                <td>
+                    <p id="heading_ft" class="ua">Мої соцмережі:</p>
+                    <p id="heading_ft" class="uk">My social networks:</p>
+                    <br />
+                </td>
+                <td id="ft_img">
+                    <a
+                        href="https://www.youtube.com/channel/UCSKYIhSoxFAZ-iL9IxYHUlA"
+                        target="_blank"
+                        onclick="bt.play()"
+                        ><img
+                            class="img_ft"
+                            src="./textures/additional/youtube.png"
+                            alt="youtube"
+                    /></a>
+                    <a
+                        href="https://discord.gg/ETxYt8DS"
+                        target="_blank"
+                        onclick="bt.play()"
+                        ><img
+                            clasmister.drigg@gmail.com
+                            <a
+                            href="https://github.com/Pro7777tim"
+                            target="_blank"
+                            onclick="bt.play()" /><img
+                            class="img_ft"
+                            src="./textures/additional/github.png"
+                            alt="github"
+                    /></a>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            let language;
+            let device;
+            let Open = false;
+            let selectedFiles;
+            let donFiles;
+            document.getElementById("modal").style.display = "none";
+
+            try {
+                language = localStorage.getItem("lang");
+                if (!language) {
+                    language = "uk";
+                }
+            } catch (error) {
+                language = "uk";
+            }
+
+            try {
+                device = localStorage.getItem("device");
+                if (!device) {
+                    device = "pc";
+                }
+            } catch (error) {
+                device = "pc";
+            }
+
+            if (language == "uk") {
+                let elem = document.getElementsByClassName("ua");
+
+                while (elem.length > 0) {
+                    elem[0].remove();
+                }
+            } else if (language == "ua") {
+                let elem = document.getElementsByClassName("uk");
+
+                while (elem.length > 0) {
+                    elem[0].remove();
+                }
+            }
+
+            const ukPhrases = [
+                "Subscribe to my YouTube",
+                "You can talk about the game in Discord",
+                "The game is an amateur project, therefore it is not financed",
+                "The game is constantly under development, so if you notice a bug, contact the developers",
+                "Thank you for spending time in our game))",
+            ];
+            const uaPhrases = [
+                "Підпишіться на мій YouTube",
+                "Можна поговорити про гру в нашому Discord",
+                "Гра є аматорським проектом, тому вона не фінансується",
+                "Гра постійно розробляється, тому якщо ви помітили баг, зв'яжіться з розробниками",
+                "Дякуємо, що приділили час нашій грі))",
+            ];
+            function getPhrases() {
+                if (language == "ua") {
+                    let respond =
+                        uaPhrases[Math.floor(Math.random() * uaPhrases.length)];
+                    return respond;
+                }
+                if (language == "uk") {
+                    let respond =
+                        ukPhrases[Math.floor(Math.random() * ukPhrases.length)];
+                    return respond;
+                }
+            }
+            function translat(ua, uk) {
+                if (language == "ua") {
+                    return ua;
+                } else if ((language = "uk")) {
+                    return uk;
+                }
+            }
+
+            function open(text) {
+                bt.play();
+                document.getElementById("modal").style.display = "block";
+                Open = true;
+                document.getElementById("contents").innerText = text;
+            }
+            function block() {
+                bt.play();
+                document.getElementById("modal").style.display = "none";
+                Open = false;
+            }
+
+            function sound(src) {
+                this.sound = document.createElement("audio");
+                this.sound.src = src;
+                this.sound.setAttribute("preload", "auto");
+                this.sound.setAttribute("controls", "none");
+                this.sound.style.display = "none";
+                document.body.appendChild(this.sound);
+                this.play = function () {
+                    this.sound.play();
+                };
+                this.stop = function () {
+                    this.sound.pause();
+                };
+            }
+
+            function selection() {
+                const value = document.getElementById("selector").value;
+                if (value == "a_g") {
+                    return "./about_game.html";
+                } else if (value == "doc") {
+                    return "./documentation.html";
+                } else if (value == "post") {
+                    return "./posts.html";
+                }
+            }
+
+            const bg = new sound("./sounds/additional/bg.mp3");
+            const bt = new sound("./sounds/additional/button.mp3");
+            bg.play();
+            setInterval(function () {
+                bg.play();
+            }, 25000);
+            open(
+                translat(
+                    "Граючи в гру, ви погоджуєтесь з умовами користування сайту, знайти їх можна на сторінці «про гру»",
+                    "By playing the game, you agree to the site's terms of use, you can find them on the 'about game' page"
+                )
+            );
+            setInterval(function () {
+                open(getPhrases());
+            }, 60000);
+            document
+                .getElementById("modal")
+                .addEventListener("click", function () {
+                    if (Open) {
+                        block();
+                    }
+                });
+            document.getElementById("info_bt").href = selection();
+            document
+                .getElementById("selector")
+                .addEventListener("click", function () {
+                    document.getElementById("info_bt").href = selection();
+                });
+
+            document
+                .getElementById("don")
+                .addEventListener("click", function () {
+                    document.getElementById("folderInput").click();
+                });
+
+            document
+                .getElementById("folderInput")
+                .addEventListener("change", function (event) {
+                    selectedFiles = event.target.files;
+                    for (const file of selectedFiles) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            console.log("File uploaded successfully");
+                            donFiles = e.target.result;
+                        };
+                        reader.onerror = function (e) {
+                            console.error("File not uploaded");
+                        };
+                        reader.readAsText(file);
+                    }
+                });
+        </script>
+    </body>
+</html>
